@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+  <title>RecordPlus</title>
+</head>
+<body>
+  <header>
+    <div class="logo">
+        <img src="./images/icon-512x512.png" alt="RecordPlus Logo">
+        <span>RecordPlus</span>
+    </div>
+    <div class="header-icons">
+      <i class="fas fa-cog fa-lg" id="settings-button"></i>
+      <i class="fas fa-circle-xmark fa-lg" id="close-button"></i>
+    </div>
+  </header>
+
+  <section class="description">
+      <p>This extension helps you record and share help videos with ease.</p>
+  </section>
+
+  <section class="record-options">
+      <div id="full-screen" class="desktop-icon">
+        <i class="fas fa-desktop fa-5x"></i>
+        <p>Full screen</p>
+    </div>
+    <div id="current-tab" class="current-tab-icon selected-color">
+      <i class="fas fa-window-restore fa-5x"></i>
+      <p>Current tab</p>
+    </div>
+  </section>
+  
+  <section class="settings">
+    <div class="setting">
+      <div class="setting__option">
+        <i class="icon fas fa-video fa-2x"></i>
+        <span class="setting-description">Camera</span>
+      </div>
+      <div class="toggle-button">
+          <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+          </label>
+      </div>
+    </div>
+    <div class="setting">
+      <div class="setting__option">
+        <i class="icon fas fa-microphone fa-2x"></i>
+        <span class="setting-description">
+          Audio
+        </span>
+      </div>
+      <div class="toggle-button">
+          <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+          </label>
+      </div>
+    </div>
+    <button id="start-recording-button">Start Recording</button>
+  </section>
+
+  <script src="./js/index.js"></script>
+</body>
+</html>

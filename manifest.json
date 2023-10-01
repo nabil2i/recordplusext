@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Record Plus",
+  "version": "1.0",
+  "description": "Extension to record screen",
+  "action": {
+    "default_icon": {
+      "512": "images/icon-512x512.png"
+    },
+    "default_popup": "index.html"
+  },
+  "host_permissions": [
+    "http://*/",
+    "https://*/*"
+  ],
+  "permissions": [
+    "scripting",
+    "desktopCapture",
+    "activeTab",
+    "tabs"
+  ],
+  "icons": {
+    
+    "512": "images/icon-512x512.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+  
+}
