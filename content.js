@@ -48,8 +48,20 @@ function onAccessApproved(stream) {
   recorder.ondataavailable = function(event) {
     let recordedBlob = event.data;
     if (recordedBlob.size > 0) {
-      chunks.push(event.data);
+      const chunkSize = 1024 * 1024; // 1 MB
+      let start = 0;
+      let end = chunkSize;
+
+      while (start < recordedBlob.size) {
+        const chunk = recordedBlob.slice(start, end);
+        chunks.push(chunk);
+
+        start = end;
+        end = Math.min(end + chunkSize, recordedBlob.size);
+      }
     }
+
+    console.log(chunks);
 
     if (!videoId) {
       let formData = new FormData();
@@ -59,7 +71,8 @@ function onAccessApproved(stream) {
       formData.append("video_file", chunks[0], randomWebmFileName);
       // formData.append("video_file", chunks[0], "screen-recording.webm");
 
-      fetch("http://34.207.165.115/api/record/videos/", {
+      fetch("https://recordplus.onrender.com/api/record/videos/", {
+      // fetch("http://34.207.165.115/api/record/videos/", {
         method: "POST",
         body: formData,
       })
@@ -70,7 +83,8 @@ function onAccessApproved(stream) {
 
           // send other chunks
           for (let i = 1; i < chunks.length; i++) {
-            sendChunk(chunks[i], `"http://34.207.165.115/api/record/videos/${videoId}/update_video_file/`)
+            sendChunk(chunks[i], `"https://recordplus.onrender.com/api/record/videos/${videoId}/update_video_file/`)
+            // sendChunk(chunks[i], `"http://34.207.165.115/api/record/videos/${videoId}/update_video_file/`)
               .then((response) => {
                 console.log(response);
                 // Check if the chunk was successfully sent
@@ -86,7 +100,8 @@ function onAccessApproved(stream) {
           }
 
           // finalize 
-          fetch(`"http://34.207.165.115/api/record/videos/${videoId}/finalize_video_upload/`, {
+          fetch(`"https://recordplus.onrender.com/api/record/videos/${videoId}/finalize_video_upload/`, {
+          // fetch(`"http://34.207.165.115/api/record/videos/${videoId}/finalize_video_upload/`, {
             method: "POST",
           })
             .then((response) => {
