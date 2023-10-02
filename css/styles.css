@@ -256,7 +256,7 @@ input:checked + .slider:before {
   align-items: center;
 }
 
-#start-recording-button {
+#start-recording-button, #stop-recording-button {
   background-color: var(--color-headings);
   border-radius: 15px;
   color: white;

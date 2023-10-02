@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const startRecordingButton = document.querySelector("button#start-recording-button");
-
+  
   if (selectedScreen === 'current-tab') {
     startRecordingButton.addEventListener("click", () => {
       chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
@@ -39,16 +39,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })
 
-// stopRecordingButton.addEventListener("click", () => {
-//   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-//     // send a message to the tab that will send a message to the content
-//     // to start recording
-//     chrome.tabs.sendMessage(tabs[0].id, {action: "stop-recording"}, function(response) {
-//       if(!chrome.runtime.lastError) {
-//         console.log(response);
-//       } else {
-//         console.error(chrome.runtime.lastError.message, 'error line 50');
-//       }
-//     })
-//   })
-// })
+const stopRecordingButton = document.querySelector("button#stop-recording-button");
+stopRecordingButton.addEventListener("click", () => {
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    // send a message to the tab that will send a message to the content
+    // to stop recording
+    chrome.tabs.sendMessage(tabs[0].id, {action: "stop-recording"}, function(response) {
+      if(!chrome.runtime.lastError) {
+        console.log(response);
+      } else {
+        console.error(chrome.runtime.lastError.message, 'error line 50');
+      }
+    })
+  })
+})
