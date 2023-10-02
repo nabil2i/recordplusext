@@ -89,9 +89,9 @@ function onAccessApproved(stream) {
                 console.log(`chunk ${i+1}/${chunks.length}`, response);
                 // Check if the chunk was successfully sent
                 if (response.ok) {
-                  console.log("Chunk uploaded successfully");
+                  console.log(`chunk ${i+1}/${chunks.length} uploaded successfully`);
                 } else {
-                  console.error("Failed to upload chunk");
+                  console.error(`Failed to upload chunk ${i+1}/${chunks.length}`);
                 }
               })
               .catch((error) => {
