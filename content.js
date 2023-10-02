@@ -86,7 +86,7 @@ function onAccessApproved(stream) {
             sendChunk(chunks[i], `"https://recordplus.onrender.com/api/record/videos/${videoId}/update_video_file/`)
             // sendChunk(chunks[i], `"http://34.207.165.115/api/record/videos/${videoId}/update_video_file/`)
               .then((response) => {
-                console.log(response);
+                console.log(`chunk ${i+1}/${chunks.length}`, response);
                 // Check if the chunk was successfully sent
                 if (response.ok) {
                   console.log("Chunk uploaded successfully");
