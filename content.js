@@ -23,7 +23,7 @@ function generateRandomWebmFileName() {
 function sendChunk(chunk, endpoint) {
   let formData = new FormData();
   const randomWebmFileName = generateRandomWebmFileName();
-  formData.append("video_chunck", chunk, randomWebmFileName);
+  formData.append("video_chunk", chunk, randomWebmFileName);
 
   return fetch(endpoint, {
     method: "PATCH",
