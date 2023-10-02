@@ -20,7 +20,7 @@ function generateRandomWebmFileName() {
   return `${timestamp}_${randomString}.webm`;
 }
 
-function sendChunk(chunck, enpoint) {
+function sendChunk(chunk, endpoint) {
   let formData = new FormData();
   const randomWebmFileName = generateRandomWebmFileName();
   formData.append("video_chunck", chunk, randomWebmFileName);
